@@ -18,19 +18,11 @@ ModLang Forge is a web-based tool designed to translate Minecraft mods and resou
 - MySQL / SQLite
 - Tailwind CSS
 
-## 🚀 Getting Started
-
-```bash
-npm install
-npm run dev
-Then open:
-http://localhost:3000
-
-🧠 Note on Development
+## 🧠 Note on Development
 
 This project was partially developed with the assistance of AI tools to accelerate development and improve productivity. All logic, structure, and final implementation decisions were reviewed and adapted manually.
 
-🔒 Transparency & Security
+## 🔒 Transparency & Security
 
 This repository is public to ensure full transparency and allow anyone to verify that the project contains no malicious code, hidden behavior, or unsafe logic.
 
@@ -38,6 +30,6 @@ The code published here is identical to the version running on the production ho
 
 All processing is performed only on the files provided by the user, and no unauthorized data collection or remote execution is performed.
 
-📜 License
+## 📜 License
 
 This project is licensed under the GNU General Public License v3.0 (GPL-3.0).
