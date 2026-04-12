@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ModLang Forge
 
-## Getting Started
+ModLang Forge is a web-based tool designed to translate Minecraft mods and resource packs efficiently while preserving structure, formatting, and placeholders.
 
-First, run the development server:
+## ✨ Features
+
+- Batch translation of mods
+- Resource pack support
+- Placeholder-safe translation
+- Automatic file detection
+- Validation system
+- Optimized processing pipeline
+
+## ⚙️ Tech Stack
+
+- Next.js
+- TypeScript
+- MySQL / SQLite
+- Tailwind CSS
+
+## 🚀 Getting Started
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Then open:
+http://localhost:3000
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+🧠 Note on Development
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+This project was partially developed with the assistance of AI tools to accelerate development and improve productivity. All logic, structure, and final implementation decisions were reviewed and adapted manually.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+🔒 Transparency & Security
 
-## Learn More
+This repository is public to ensure full transparency and allow anyone to verify that the project contains no malicious code, hidden behavior, or unsafe logic.
 
-To learn more about Next.js, take a look at the following resources:
+The code published here is identical to the version running on the production host, with no hidden modifications or differences.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+All processing is performed only on the files provided by the user, and no unauthorized data collection or remote execution is performed.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+📜 License
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is licensed under the GNU General Public License v3.0 (GPL-3.0).
