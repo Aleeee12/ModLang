@@ -15,7 +15,7 @@ ModLang Forge is a web-based tool designed to translate Minecraft mods and resou
 
 - Next.js
 - TypeScript
-- MySQL / SQLite
+- MySQL
 - Tailwind CSS
 
 ## 🧠 Note on Development
