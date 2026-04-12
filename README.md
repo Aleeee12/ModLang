@@ -1,4 +1,4 @@
-# ModLang Forge
+# ModLang
 
 ModLang Forge is a web-based tool designed to translate Minecraft mods and resource packs efficiently while preserving structure, formatting, and placeholders.
 
