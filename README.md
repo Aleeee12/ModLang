@@ -20,7 +20,7 @@ ModLang Forge is a web-based tool designed to translate Minecraft mods and resou
 
 ## 🧠 Note on Development
 
-This project was partially developed with the assistance of AI tools to accelerate development and improve productivity. All logic, structure, and final implementation decisions were reviewed and adapted manually.
+This project was developed with the assistance of AI tools to accelerate development and improve productivity.
 
 ## 🔒 Transparency & Security
 
