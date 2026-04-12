@@ -278,12 +278,31 @@ export default function Home() {
   return (
     <main className="min-h-screen flex flex-col bg-gradient-to-b from-zinc-950 via-zinc-950 to-black text-white p-6 md:p-8">
       <div className="relative max-w-6xl mx-auto w-full space-y-6 flex-1">
+
+<a
+  href="https://github.com/Aleeee12/ModLang"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="inline-flex items-center gap-2 rounded-xl border border-zinc-700 bg-zinc-950/70 px-3 py-1.5 text-zinc-300 hover:bg-zinc-900 transition-all text-sm"
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    className="h-4 w-4 fill-current"
+    aria-hidden="true"
+  >
+    <path d="M12 0.5C5.65 0.5 0.5 5.65 0.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55 0-.27-.01-1.16-.02-2.1-3.2.7-3.88-1.54-3.88-1.54-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.02 1.74 2.67 1.24 3.32.95.1-.74.4-1.24.72-1.52-2.56-.29-5.26-1.28-5.26-5.7 0-1.26.45-2.3 1.18-3.12-.12-.29-.51-1.47.11-3.06 0 0 .97-.31 3.17 1.19.92-.26 1.9-.39 2.88-.39.98 0 1.96.13 2.88.39 2.2-1.5 3.17-1.19 3.17-1.19.62 1.59.23 2.77.11 3.06.73.82 1.18 1.86 1.18 3.12 0 4.43-2.7 5.41-5.27 5.7.41.36.77 1.07.77 2.16 0 1.56-.01 2.82-.01 3.2 0 .3.21.66.79.55C20.71 21.38 24 17.07 24 12c0-6.35-5.15-11.5-12-11.5Z"/>
+  </svg>
+
+  <span>Source</span>
+</a>
+
         <Link
           href="/ftbquests"
           className="
             absolute
             -right-70
-            top-6
+            top-32
             z-20
             w-60
             rounded-2xl
@@ -317,42 +336,42 @@ export default function Home() {
         </Link>
 
         <Link
-  href="/community"
-  className="
-    absolute
-    -right-70
-    top-32
-    z-20
-    w-60
-    rounded-2xl
-    border border-zinc-700
-    bg-zinc-900/90
-    p-4
-    backdrop-blur
-    shadow-xl
-    transition-all
-    hover:border-zinc-500
-    hover:bg-zinc-900
-    hover:scale-[1.02]
-  "
->
-  <div className="flex items-start justify-between gap-3">
-    <div>
-      <p className="text-base font-semibold text-white">
-        {uiLang === "es" ? "Comunidad" : "Community"}
-      </p>
-      <p className="mt-1 text-sm text-zinc-400">
-        {uiLang === "es"
-          ? "Ver traducciones subidas"
-          : "View uploaded translations"}
-      </p>
-    </div>
+          href="/community"
+          className="
+            absolute
+            -right-70
+            top-56
+            z-20
+            w-60
+            rounded-2xl
+            border border-zinc-700
+            bg-zinc-900/90
+            p-4
+            backdrop-blur
+            shadow-xl
+            transition-all
+            hover:border-zinc-500
+            hover:bg-zinc-900
+            hover:scale-[1.02]
+          "
+        >
+          <div className="flex items-start justify-between gap-3">
+            <div>
+              <p className="text-base font-semibold text-white">
+                {uiLang === "es" ? "Comunidad" : "Community"}
+              </p>
+              <p className="mt-1 text-sm text-zinc-400">
+                {uiLang === "es"
+                  ? "Ver traducciones subidas"
+                  : "View uploaded translations"}
+              </p>
+            </div>
 
-    <div className="rounded-xl border border-zinc-600 bg-zinc-950 px-3 py-1 text-sm text-zinc-300">
-      →
-    </div>
-  </div>
-</Link>
+            <div className="rounded-xl border border-zinc-600 bg-zinc-950 px-3 py-1 text-sm text-zinc-300">
+              →
+            </div>
+          </div>
+        </Link>
 
         <Header
           appName={APP_NAME}
