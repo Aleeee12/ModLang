@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
-import fs from "fs";
-import { getCommunityById, deleteCommunityTranslationById } from "@/app/community/lib/queries";
+import fs from "fs/promises";
+import {
+  getCommunityById,
+  deleteCommunityTranslationById,
+} from "@/app/community/lib/queries";
 
 export const runtime = "nodejs";
 
@@ -41,12 +44,12 @@ export async function DELETE(
       );
     }
 
-    try {
-      if (existing.file_path && fs.existsSync(existing.file_path)) {
-        fs.unlinkSync(existing.file_path);
+    if (existing.file_path) {
+      try {
+        await fs.unlink(existing.file_path);
+      } catch (fileError) {
+        console.error("Error deleting community file:", fileError);
       }
-    } catch (fileError) {
-      console.error("Error deleting community file:", fileError);
     }
 
     await deleteCommunityTranslationById(numericId);
