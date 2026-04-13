@@ -11,8 +11,9 @@ export async function GET() {
       ok: true,
       items,
     });
-  } catch (err) {
-    console.error(err);
+  } catch (error) {
+    console.error("Community list route error:", error);
+
     return NextResponse.json(
       { ok: false, items: [] },
       { status: 500 }
