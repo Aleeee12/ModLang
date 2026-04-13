@@ -5,17 +5,16 @@ type PresenceEntry = {
   lastSeen: number;
 };
 
-type CountRow = {
-  total_visits?: number;
-  unique_users?: number;
-};
-
 type StatsRow = {
   id: number;
   total_visits: number;
   total_translations: number;
   unique_users: number;
   online_users: number | null;
+};
+
+type InsertResult = {
+  affectedRows: number;
 };
 
 const presence = new Map<string, PresenceEntry>();
@@ -32,60 +31,32 @@ function cleanupPresence() {
   }
 }
 
-
 export async function registerVisit() {
   await db.query(`
     UPDATE global_stats
     SET total_visits = total_visits + 1
     WHERE id = 1
   `);
-
-  const [rows] = await db.query(
-    `SELECT total_visits FROM global_stats WHERE id = 1 LIMIT 1`
-  );
-
-  const row = (rows as CountRow[])[0];
-
-  return Number(row?.total_visits ?? 0);
 }
 
-
 export async function registerUniqueVisitor(visitorId: string) {
-  if (!visitorId) {
-    const [rows] = await db.query(
-      `SELECT unique_users FROM global_stats WHERE id = 1 LIMIT 1`
-    );
+  if (!visitorId) return;
 
-    const row = (rows as CountRow[])[0];
-    return Number(row?.unique_users ?? 0);
-  }
-
-  const [existsRows] = await db.query(
-    `SELECT 1 FROM visitors WHERE visitorId = ? LIMIT 1`,
+  const [result] = await db.query(
+    `INSERT IGNORE INTO visitors (visitorId) VALUES (?)`,
     [visitorId]
   );
 
-  const exists = Array.isArray(existsRows) && existsRows.length > 0;
+  const insertResult = result as InsertResult;
 
-  if (!exists) {
-    await db.query(`INSERT INTO visitors (visitorId) VALUES (?)`, [visitorId]);
-
+  if (insertResult.affectedRows > 0) {
     await db.query(`
       UPDATE global_stats
       SET unique_users = unique_users + 1
       WHERE id = 1
     `);
   }
-
-  const [rows] = await db.query(
-    `SELECT unique_users FROM global_stats WHERE id = 1 LIMIT 1`
-  );
-
-  const row = (rows as CountRow[])[0];
-
-  return Number(row?.unique_users ?? 0);
 }
-
 
 export async function incrementTranslations(amount = 1) {
   await db.query(
@@ -97,7 +68,6 @@ export async function incrementTranslations(amount = 1) {
     [amount]
   );
 }
-
 
 export function upsertPresence(tabId: string) {
   if (!tabId) return;
@@ -112,7 +82,6 @@ export function removePresence(tabId: string) {
   if (!tabId) return;
   presence.delete(tabId);
 }
-
 
 export async function getAdminStats() {
   cleanupPresence();
