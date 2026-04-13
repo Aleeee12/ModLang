@@ -12,15 +12,15 @@ export async function POST(req: NextRequest) {
     const body = await req.json().catch(() => null);
     const visitorId = String(body?.visitorId ?? "").trim();
 
-    const totalVisits = registerVisit();
-    const uniqueVisitors = registerUniqueVisitor(visitorId);
+    await registerVisit();
+    await registerUniqueVisitor(visitorId);
 
     return NextResponse.json({
       ok: true,
-      totalVisits,
-      uniqueVisitors,
     });
-  } catch {
+  } catch (error) {
+    console.error("Visit route error:", error);
+
     return NextResponse.json(
       { ok: false },
       { status: 500 }
