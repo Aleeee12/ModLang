@@ -15,13 +15,14 @@ const pool =
 
     waitForConnections: true,
 
-    
-    connectionLimit: 15, 
+    connectionLimit: 10,
+    maxIdle: 10,
+    idleTimeout: 60000,
+
     queueLimit: 0,
 
-    
     connectTimeout: 15000,
-    
+
     enableKeepAlive: true,
     keepAliveInitialDelay: 0,
   });
