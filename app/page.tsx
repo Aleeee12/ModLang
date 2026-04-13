@@ -25,12 +25,6 @@ type AnnouncementResponse = {
   error?: string;
 };
 
-type VisitResponse = {
-  ok?: boolean;
-  totalVisits?: number;
-  uniqueVisitors?: number;
-};
-
 type StatsResponse = {
   totalVisits?: number;
   totalTranslations?: number;
@@ -132,7 +126,7 @@ export default function Home() {
 
     const interval = setInterval(() => {
       void loadAnnouncement();
-    }, 5000);
+    }, 30000);
 
     return () => {
       cancelled = true;
@@ -205,12 +199,6 @@ export default function Home() {
           throw new Error(`Visit request failed: ${res.status}`);
         }
 
-        const data = (await res.json()) as VisitResponse;
-
-        if (!cancelled) {
-          setUniqueVisitors(Number(data?.uniqueVisitors ?? 0));
-        }
-
         await loadStats();
       } catch (error) {
         console.error("Visit error:", error);
@@ -260,7 +248,7 @@ export default function Home() {
 
     const statsInterval = setInterval(() => {
       void loadStats();
-    }, 5000);
+    }, 30000);
 
     document.addEventListener("visibilitychange", handleVisibilityChange);
     window.addEventListener("pagehide", handlePageHide);
@@ -278,31 +266,51 @@ export default function Home() {
   return (
     <main className="min-h-screen flex flex-col bg-gradient-to-b from-zinc-950 via-zinc-950 to-black text-white p-6 md:p-8">
       <div className="relative max-w-6xl mx-auto w-full space-y-6 flex-1">
+        <a
+          href="https://github.com/Aleeee12/ModLang"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="
+            absolute
+            -right-70
+            top-6
+            z-20
+            w-44
+            rounded-xl
+            border border-zinc-700
+            bg-zinc-950/70
+            px-3
+            py-2
+            text-zinc-300
+            hover:bg-zinc-900
+            transition-all
+          "
+        >
+          <div className="flex items-center justify-between gap-2">
+            <div className="flex items-center gap-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                className="h-4 w-4 fill-current"
+                aria-hidden="true"
+              >
+                <path d="M12 0.5C5.65 0.5 0.5 5.65 0.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55 0-.27-.01-1.16-.02-2.1-3.2.7-3.88-1.54-3.88-1.54-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.02 1.74 2.67 1.24 3.32.95.1-.74.4-1.24.72-1.52-2.56-.29-5.26-1.28-5.26-5.7 0-1.26.45-2.3 1.18-3.12-.12-.29-.51-1.47.11-3.06 0 0 .97-.31 3.17 1.19.92-.26 1.9-.39 2.88-.39.98 0 1.96.13 2.88.39 2.2-1.5 3.17-1.19 3.17-1.19.62 1.59.23 2.77.11 3.06.73.82 1.18 1.86 1.18 3.12 0 4.43-2.7 5.41-5.27 5.7.41.36.77 1.07.77 2.16 0 1.56-.01 2.82-.01 3.2 0 .3.21.66.79.55C20.71 21.38 24 17.07 24 12c0-6.35-5.15-11.5-12-11.5Z" />
+              </svg>
+              <span className="text-sm font-medium">Source</span>
+            </div>
 
-<a
-  href="https://github.com/Aleeee12/ModLang"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="inline-flex items-center gap-2 rounded-xl border border-zinc-700 bg-zinc-950/70 px-3 py-1.5 text-zinc-300 hover:bg-zinc-900 transition-all text-sm"
->
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    className="h-4 w-4 fill-current"
-    aria-hidden="true"
-  >
-    <path d="M12 0.5C5.65 0.5 0.5 5.65 0.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55 0-.27-.01-1.16-.02-2.1-3.2.7-3.88-1.54-3.88-1.54-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.02 1.74 2.67 1.24 3.32.95.1-.74.4-1.24.72-1.52-2.56-.29-5.26-1.28-5.26-5.7 0-1.26.45-2.3 1.18-3.12-.12-.29-.51-1.47.11-3.06 0 0 .97-.31 3.17 1.19.92-.26 1.9-.39 2.88-.39.98 0 1.96.13 2.88.39 2.2-1.5 3.17-1.19 3.17-1.19.62 1.59.23 2.77.11 3.06.73.82 1.18 1.86 1.18 3.12 0 4.43-2.7 5.41-5.27 5.7.41.36.77 1.07.77 2.16 0 1.56-.01 2.82-.01 3.2 0 .3.21.66.79.55C20.71 21.38 24 17.07 24 12c0-6.35-5.15-11.5-12-11.5Z"/>
-  </svg>
-
-  <span>Source</span>
-</a>
+            <div className="rounded-lg border border-zinc-600 bg-zinc-950 px-2 py-0.5 text-xs text-zinc-300">
+              →
+            </div>
+          </div>
+        </a>
 
         <Link
           href="/ftbquests"
           className="
             absolute
             -right-70
-            top-32
+            top-20
             z-20
             w-60
             rounded-2xl
@@ -340,7 +348,7 @@ export default function Home() {
           className="
             absolute
             -right-70
-            top-56
+            top-44
             z-20
             w-60
             rounded-2xl
